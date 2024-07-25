@@ -1,0 +1,123 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+group 'me.M0dii'
+version '1.0.0'
+
+// Shading and minimizing
+shadowJar {
+    relocate('dev.triumphteam.gui', 'me.m0dii.gui')
+    relocate('com.jeff_media.morepersistentdatatypes', 'me.m0dii.morepersistentdatatypes')
+    relocate('com.jeff_media.customblockdata', 'me.m0dii.customblockdata')
+
+    minimize()
+
+    archiveFileName = 'PluginTemplate-${version}.jar'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+
+    flatDir {
+        dirs 'libs'
+    }
+
+    mavenLocal()
+    mavenCentral()
+
+    maven {
+        url 'https://hub.jeff-media.com/nexus/repository/jeff-media-public/'
+    }
+
+    maven {
+        name 'm2-dv8tion'
+        url 'https://m2.dv8tion.net/releases'
+    }
+
+    flatDir {
+        dirs '../libs'
+    }
+
+    flatDir {
+        dirs '../artifacts'
+    }
+
+    maven {
+        url 'https://maven.enginehub.org/repo/'
+    }
+
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+
+    maven {
+        url 'https://repo.crazycrew.us/releases'
+    }
+
+    maven {
+        url 'https://repo.papermc.io/repository/maven-public/'
+    }
+
+    maven {
+        url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+
+    maven {
+        url 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+    }
+
+    maven {
+        url 'https://jitpack.io'
+    }
+
+    maven {
+        url 'https://ci.ender.zone/plugin/repository/everything/'
+    }
+
+    maven {
+        name 'essentialsx-releases'
+        url 'https://repo.essentialsx.net/releases/'
+    }
+
+    maven {
+        url 'https://repo.dmulloy2.net/repository/public/'
+    }
+
+    maven {
+        url 'https://hub.jeff-media.com/nexus/repository/jeff-media-public/'
+    }
+
+    maven {
+        url 'https://repo.helpch.at/snapshots/'
+    }
+}
+
+dependencies {
+    // https://github.com/PaperMC/Paper
+    compileOnly 'io.papermc.paper:paper-api:1.20.2-R0.1-SNAPSHOT'
+
+    implementation 'com.github.M0diis:M0-PLLib:dev'
+    implementation 'com.jeff_media:MorePersistentDataTypes:2.3.1'
+    implementation 'dev.triumphteam:triumph-gui:3.1.7'
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    // flatDir
+    // compileOnly name: 'jar-name'
+
+    // SQL
+    // implementation 'org.xerial:sqlite-jdbc:3.34.0'
+    // implementation name: 'mysql-connector-java-8.0.24'
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+}
+

@@ -1,0 +1,7 @@
+## Misc
+# Enable debugging
+# Sends a lot of extra messages to the console
+debug: false
+
+# Notifies about latest updates
+notify-update: true

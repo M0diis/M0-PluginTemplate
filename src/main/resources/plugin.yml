@@ -1,0 +1,14 @@
+name: ...
+main: me.m0dii.plugintemplate.TemplatePlugin
+description: ...
+version: 1.0.0
+api-version: 1.13
+author: M0dii
+commands:
+  sample-command:
+    description: ...
+    permission: sample.permission
+permissions:
+  sample.permission:
+    description: ...
+    default: op
